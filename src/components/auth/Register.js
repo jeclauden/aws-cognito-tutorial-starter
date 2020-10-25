@@ -43,10 +43,22 @@ class Register extends Component {
     try {
       const signUpResponse = await Auth.signUp({
         username,
-        email,
+        password,
+        attributes: {
+          email: email
+        }
       });
-    } catch(erro) {
-
+      console.log(signUpResponse);
+      this.props.history.push("/welcome");
+    } catch(error) {
+      let err = null;
+      !error.message ? err = {"messsage" : error} : err = error;
+      this.setState({
+        errors: {
+          ...this.state.errors, 
+          cognito: err
+        }
+      })
     }
   };
 
