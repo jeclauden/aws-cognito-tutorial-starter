@@ -36,15 +36,15 @@ class App extends Component {
     const authProps = {
       isAuthenticated: this.state.isAuthenticated,
       user: this.state.user,
-      setAuthStatus: this.state.setAuthStatus,
-      setUser: this.state.setUser
+      setAuthStatus: this.setAuthStatus,
+      setUser: this.setUser
     }
 
     return (
       <div className="App">
         <Router>
           <div>
-            <Navbar authProps={ authProps }/>
+            <Navbar auth={ authProps }/>
             <Switch>
               <Route exact path="/" render = {(props) => <Home {...props} auth={authProps} />} />
               <Route exact path="/products" render = {(props) => <Products {...props} auth={authProps} />} />
